@@ -245,6 +245,22 @@ namespace Iros._7th.Workshop
             }
         }
 
+
+        [System.Xml.Serialization.XmlIgnore]
+        public bool IsArchiveUpdateAvailable {
+            get {
+                Mod cat = Sys.GetModFromCatalog(this.ModID);
+                InstalledItem installedItem = Sys.Library.GetItem(this.ModID);
+
+                if (cat == null)
+                {
+                    return false;
+                }
+
+                return cat.LatestVersion.Patches.isPatchAvailable(LatestInstalled.VersionDetails.Version);
+            }
+        }
+
         public bool ModExistsOnFileSystem()
         {
             string fn = Path.Combine(Sys.Settings.LibraryLocation, LatestInstalled.InstalledLocation);

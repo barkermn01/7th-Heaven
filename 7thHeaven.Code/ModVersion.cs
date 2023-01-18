@@ -3,6 +3,7 @@
   The original developer is Iros <irosff@outlook.com>
 */
 
+using _7thHeaven.Code;
 using System;
 using System.Collections.Generic;
 
@@ -24,6 +25,9 @@ namespace Iros._7th.Workshop
         public List<string> PatchLinks { get; set; }
         public string ExtractSubFolder { get; set; }
         public string ExtractInto { get; set; }
+
+        [System.Xml.Serialization.XmlElement("ArchiveUpdates")]
+        public ModArchiveUpdates Patches { get; set; }
 
         public decimal Version { get; set; }
         public DateTime ReleaseDate { get; set; }
